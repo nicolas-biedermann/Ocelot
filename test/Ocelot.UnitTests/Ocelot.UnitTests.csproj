@@ -16,6 +16,8 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <CodeAnalysisRuleSet>..\..\codeanalysis.ruleset</CodeAnalysisRuleSet>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <ParallelizeAssemblies>false</ParallelizeAssemblies>
+    <ParallelizeTestCollections>false</ParallelizeTestCollections>
     <CodeAnalysisRuleSet>..\..\codeanalysis.ruleset</CodeAnalysisRuleSet>
     <NoWarn>$(NoWarn);CS0618;CS1591</NoWarn>
   </PropertyGroup>

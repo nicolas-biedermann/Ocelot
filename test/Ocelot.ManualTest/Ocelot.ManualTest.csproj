@@ -10,6 +10,8 @@
     <PackageId>Ocelot.ManualTest</PackageId>
     <RuntimeIdentifiers>win-x64;osx-x64</RuntimeIdentifiers>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <ParallelizeAssemblies>false</ParallelizeAssemblies>
+    <ParallelizeTestCollections>false</ParallelizeTestCollections>
     <CodeAnalysisRuleSet>..\..\codeanalysis.ruleset</CodeAnalysisRuleSet>
     <NoWarn>$(NoWarn);CS0618;CS1591</NoWarn>
   </PropertyGroup>
