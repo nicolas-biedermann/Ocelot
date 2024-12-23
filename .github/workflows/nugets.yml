@@ -1,10 +1,8 @@
 name: Ocelot Nugets
 
 on:
-  push:
-    branches: [ "develop" ]
-  pull_request:
-    branches: [ "develop" ]
+  release:
+    types: [published]
 
 jobs:
   Build_Nuget_Packages:
