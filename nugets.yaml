@@ -1,0 +1,36 @@
+name: Ocelot Nugets
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+  release:
+    types: [published]
+
+jobs:
+  Build_Nuget_Packages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: | 
+            8.0.x
+            9.0.x
+    - name: Restore dependencies
+      run: dotnet restore Ocelot.sln
+    - name: Build
+      run: dotnet build --no-restore src/Ocelot.sln -c Release
+    - name: Pack Ocelot
+      run: dotnet pack -c Release src/Ocelot/Ocelot.csproj --no-build --output .
+    - name: Push to NuGet
+      run: dotnet nuget push "*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        NUGET_TOKEN: ${{ secrets.NUGET_API_KEY }}
+      
