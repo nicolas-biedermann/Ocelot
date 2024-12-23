@@ -23,11 +23,11 @@ jobs:
             8.0.x
             9.0.x
     - name: Restore dependencies
-      run: dotnet restore src/Ocelot.sln
+      run: dotnet restore Ocelot.sln
     - name: Build
-      run: dotnet build --no-restore src/Ocelot.sln
+      run: dotnet build --no-restore Ocelot.sln
     - name: Unit & Integration Test
-      run: dotnet test --no-build --verbosity normal src/Ocelot.sln /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover
+      run: dotnet test --no-build --verbosity normal Ocelot.sln /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover
     - name: SonarScanner for .NET 8/9 with pull request decoration support
       uses: highbyte/sonarscan-dotnet@v2.4.1
       with:
